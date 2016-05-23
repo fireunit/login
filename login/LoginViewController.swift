@@ -10,28 +10,41 @@ import UIKit
 import Material
 
 class LoginViewController: UIViewController {
+    
+    let emailTextField: TextField = TextField()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        prepareNavigationController()
         prepareView()
+        prepareEmailField()
+        prepareNextButton()
     }
-
+    
+    private func prepareNavigationController() {
+        let _ = navigationController?.navigationBar.subviews.map { $0.subviews.map { if $0 is UIImageView { $0.removeFromSuperview() } } }
+        navigationController?.navigationBar.barTintColor = MaterialColor.white
+    }
+    
     private func prepareView() {
         view.backgroundColor = MaterialColor.white
+    }
+    
+    private func prepareEmailField() {
+        emailTextField.placeholder = "Email"
+        emailTextField.font = RobotoFont.regularWithSize(16)
+        emailTextField.textColor = MaterialColor.black
+        view.addSubview(emailTextField)
         
         let margin = CGFloat(16)
-        
-        // TextField
-        let textField: TextField = TextField()
-        textField.placeholder = "Email"
-        textField.font = RobotoFont.regularWithSize(16)
-        textField.textColor = MaterialColor.black
-        
-        let clearButton: FlatButton = FlatButton()
-        clearButton.pulseColor = MaterialColor.grey.base
-        clearButton.tintColor = MaterialColor.grey.base
-        view.addSubview(textField)
-        
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        MaterialLayout.size(view, child: emailTextField, width: view.frame.width - margin * 2, height: 25)
+        MaterialLayout.alignFromTopLeft(view, child: emailTextField, top:160 , left: margin)
+    }
+    
+    private func prepareNextButton() {
         let nextButton: RaisedButton = RaisedButton(frame: CGRectMake(107, 207, 100, 35))
         nextButton.setTitle("Next", forState: .Normal)
         nextButton.titleLabel!.font = RobotoFont.mediumWithSize(14)
@@ -39,17 +52,15 @@ class LoginViewController: UIViewController {
         nextButton.pulseColor = MaterialColor.white
         nextButton.addTarget(self, action: #selector(handleNextButton), forControlEvents: .TouchUpInside)
         view.addSubview(nextButton)
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        MaterialLayout.size(view, child: textField, width: view.frame.width - margin * 2, height: 25)
-        MaterialLayout.alignFromTopLeft(view, child: textField, top:160 , left: margin)
-
     }
     
     internal func handleNextButton() {
-        print("nextButtonWasTapped")
-        navigationController?.pushViewController(PasswordViewController(), animated: true)
+        if let email = emailTextField.text {
+            let passwordVC = PasswordViewController()
+            passwordVC.email = email
+            navigationController?.pushViewController(passwordVC, animated: true)
+        }
     }
-
+    
 }
 

@@ -8,39 +8,59 @@
 
 import UIKit
 import Material
+import Firebase
 
 class PasswordViewController: UIViewController {
+    
+    var email = ""
+    
+    private let passwordTextField: TextField = TextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
+        preparePasswordField()
+        prepareSubmitButton()
+    }
+
+    private func prepareView() {
+        view.backgroundColor = MaterialColor.white
     }
     
-    private func prepareView() {
+    private func preparePasswordField() {
+        passwordTextField.placeholder = "Password"
+        passwordTextField.font = RobotoFont.regularWithSize(16)
+        passwordTextField.textColor = MaterialColor.black
+        passwordTextField.secureTextEntry = true
+        view.addSubview(passwordTextField)
+       
         let margin = CGFloat(16)
-        view.backgroundColor = MaterialColor.white
-        // TextField
-        let textField: TextField = TextField()
-        textField.placeholder = "Password"
-        textField.font = RobotoFont.regularWithSize(16)
-        textField.textColor = MaterialColor.black
-        
-        let clearButton: FlatButton = FlatButton()
-        clearButton.pulseColor = MaterialColor.grey.base
-        clearButton.tintColor = MaterialColor.grey.base
-        view.addSubview(textField)
-        
-        
-        let submitButton: RaisedButton = RaisedButton(frame: CGRectMake(107, 207, 100, 35))
-        submitButton.setTitle("Login", forState: .Normal)
-        submitButton.titleLabel!.font = RobotoFont.mediumWithSize(14)
-        submitButton.backgroundColor = MaterialColor.cyan.darken2
-        submitButton.pulseColor = MaterialColor.white
-        view.addSubview(submitButton)
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        MaterialLayout.size(view, child: textField, width: view.frame.width - margin * 2, height: 25)
-        MaterialLayout.alignFromTopLeft(view, child: textField, top:160 , left: margin)
-        
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        MaterialLayout.size(view, child: passwordTextField, width: view.frame.width - margin * 2, height: 25)
+        MaterialLayout.alignFromTopLeft(view, child: passwordTextField, top:160 , left: margin)
     }
+
+    private func prepareSubmitButton() {
+        let loginButton: RaisedButton = RaisedButton(frame: CGRectMake(107, 207, 100, 35))
+        loginButton.setTitle("Login", forState: .Normal)
+        loginButton.titleLabel!.font = RobotoFont.mediumWithSize(14)
+        loginButton.backgroundColor = MaterialColor.cyan.darken2
+        loginButton.pulseColor = MaterialColor.white
+        loginButton.addTarget(self, action: #selector(handleLoginButton), forControlEvents: .TouchUpInside)
+
+        view.addSubview(loginButton)
+    }
+    
+    func handleLoginButton() {
+        if let password = passwordTextField.text {
+            FIRAuth.auth()?.signInWithEmail(email, password: password) { (user, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    print(user)
+                }
+            }
+        }
+    }
+    
 }
