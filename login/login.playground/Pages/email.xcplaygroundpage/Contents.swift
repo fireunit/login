@@ -18,36 +18,16 @@ XCPlaygroundPage.currentPage.liveView = view
 
 view.addSubview(iPhone6)
 
-
-
 let size = CGFloat(40)
 let margin = CGFloat(16)
 let buttonSize = CGFloat(64)
 let largeMargin = 96
 
-// Title Label
-let titleLabel: UILabel = MaterialLabel()
-titleLabel.text = "Stormtrooper Amount"
-titleLabel.textColor = MaterialColor.grey.base
-titleLabel.font = RobotoFont.regularWithSize(16)
-view.addSubview(titleLabel)
-
-// Amount label.
-let amountLabel: UILabel = UILabel()
-amountLabel.text = "300"
-amountLabel.textAlignment = .Center
-amountLabel.backgroundColor = MaterialColor.yellow.lighten3
-amountLabel.textColor = MaterialColor.black
-amountLabel.font = RobotoFont.regularWithSize(40)
-view.addSubview(amountLabel)
-
 // TextField
 let textField: TextField = TextField()
-textField.placeholder = "Password"
-//textField.placeholderTextColor = MaterialColor.grey.base
+textField.placeholder = "Email"
 textField.font = RobotoFont.regularWithSize(16)
 textField.textColor = MaterialColor.black
-//let image = UIImage(named: "ic_close_white")?.imageWithRenderingMode(.AlwaysTemplate)
 
 let clearButton: FlatButton = FlatButton()
 clearButton.pulseColor = MaterialColor.grey.base
@@ -56,7 +36,7 @@ view.addSubview(textField)
 
 
 let submitButton: RaisedButton = RaisedButton(frame: CGRectMake(107, 207, 100, 35))
-submitButton.setTitle("Login", forState: .Normal)
+submitButton.setTitle("Next", forState: .Normal)
 submitButton.titleLabel!.font = RobotoFont.mediumWithSize(14)
 submitButton.backgroundColor = MaterialColor.cyan.darken2
 submitButton.pulseColor = MaterialColor.white

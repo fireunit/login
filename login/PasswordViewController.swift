@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  PasswordViewController.swift
 //  login
 //
 //  Created by doug on 5/23/16.
@@ -9,21 +9,19 @@
 import UIKit
 import Material
 
-class LoginViewController: UIViewController {
-
+class PasswordViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareView()
     }
-
+    
     private func prepareView() {
-        view.backgroundColor = MaterialColor.white
-        
         let margin = CGFloat(16)
-        
+        view.backgroundColor = MaterialColor.white
         // TextField
         let textField: TextField = TextField()
-        textField.placeholder = "Email"
+        textField.placeholder = "Password"
         textField.font = RobotoFont.regularWithSize(16)
         textField.textColor = MaterialColor.black
         
@@ -32,24 +30,17 @@ class LoginViewController: UIViewController {
         clearButton.tintColor = MaterialColor.grey.base
         view.addSubview(textField)
         
-        let nextButton: RaisedButton = RaisedButton(frame: CGRectMake(107, 207, 100, 35))
-        nextButton.setTitle("Next", forState: .Normal)
-        nextButton.titleLabel!.font = RobotoFont.mediumWithSize(14)
-        nextButton.backgroundColor = MaterialColor.cyan.darken2
-        nextButton.pulseColor = MaterialColor.white
-        nextButton.addTarget(self, action: #selector(handleNextButton), forControlEvents: .TouchUpInside)
-        view.addSubview(nextButton)
+        
+        let submitButton: RaisedButton = RaisedButton(frame: CGRectMake(107, 207, 100, 35))
+        submitButton.setTitle("Login", forState: .Normal)
+        submitButton.titleLabel!.font = RobotoFont.mediumWithSize(14)
+        submitButton.backgroundColor = MaterialColor.cyan.darken2
+        submitButton.pulseColor = MaterialColor.white
+        view.addSubview(submitButton)
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         MaterialLayout.size(view, child: textField, width: view.frame.width - margin * 2, height: 25)
         MaterialLayout.alignFromTopLeft(view, child: textField, top:160 , left: margin)
-
+        
     }
-    
-    internal func handleNextButton() {
-        print("nextButtonWasTapped")
-        navigationController?.pushViewController(PasswordViewController(), animated: true)
-    }
-
 }
-
