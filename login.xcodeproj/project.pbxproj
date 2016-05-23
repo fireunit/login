@@ -55,6 +55,7 @@
 		916C90251CF3762400020BA8 /* loginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginUITests.swift; sourceTree = "<group>"; };
 		916C90271CF3762400020BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		916C90331CF3764700020BA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		916C90351CF3792A00020BA8 /* login.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = login.playground; sourceTree = "<group>"; };
 		937E210E017C3FBD19C4F1F6 /* Pods-loginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loginTests/Pods-loginTests.release.xcconfig"; sourceTree = "<group>"; };
 		B1287A384B2C749BFEEDF9A0 /* Pods-loginUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loginUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-loginUITests/Pods-loginUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EFC0C24A73F2B3647ABCA066 /* Pods-login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.release.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		916C90041CF3762400020BA8 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				916C90351CF3792A00020BA8 /* login.playground */,
 				916C90051CF3762400020BA8 /* AppDelegate.swift */,
 				916C90071CF3762400020BA8 /* LoginViewController.swift */,
 				916C900C1CF3762400020BA8 /* Assets.xcassets */,
